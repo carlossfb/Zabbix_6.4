@@ -1,4 +1,4 @@
-# Zabbix_6.4
+# Zabbix_6.4 - Monitoramento
 Este repositório tem como objetivo armazenar scripts uteis referentes ao Zabbix 6.4, desde a instalação do server até a configuração dos agents para ambientes LINUX.
 
 #### Testado:
