@@ -17,7 +17,7 @@ apt update && apt install mysql-server
 
 # PARTE 1 = MYSQL SERVER
 # Baixar os pacotes do Zabbix para instalacao do Agent, Server e FrontEnd
-wget https://repo.zabbix.com/zabbix/6.4/debian/pool/main/z/zabbix-release/zabbix-release_6.4-1+debian11_all.deb -y && wget https://repo.zabbix.com/zabbix/6.4/debian/pool/main/z/zabbix-release/zabbix-release_6.4-1+debian11_all.deb  
+wget https://repo.zabbix.com/zabbix/6.4/debian/pool/main/z/zabbix-release/zabbix-release_6.4-1+debian11_all.deb 
 dpkg -i zabbix-release_6.4-1+debian11_all.deb
 
 # Atualizar lista de repositorios
@@ -27,7 +27,7 @@ apt update
 apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sql-scripts zabbix-agent -y
 
 echo "Vamos configurar o usuario do zabbix e o banco de dados, digite a senha do root:"
-mysql -u root -p mysql -e "create database zabbix character set utf8mb4 collate utf8mb4_bin; create user zabbix@localhost identified by 'Senha@2023';grant all privileges on zabbix.* to zabbix@localhost;set global log_bin_trust_function_creators = 1;"
+mysql -u root -p mysql -e "create database zabbix character set utf8mb4 collate utf8mb4_bin; create user zabbix@localhost identified by '<password>';grant all privileges on zabbix.* to zabbix@localhost;set global log_bin_trust_function_creators = 1;"
 
 echo "Precisamos agora da senha do usuario zabbix que indicou para o banco, verifique o script se necessario:"
 zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix
