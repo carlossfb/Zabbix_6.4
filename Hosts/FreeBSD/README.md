@@ -50,7 +50,7 @@ sed -i 's/Hostname=Zabbix server/Hostname=nas/' /etc/zabbix/zabbix_agentd.conf
 ```bash
 echo 'zabbix_agentd_enable="YES"' >> /etc/rc.conf
 ```
-### Create The following config
+### Create The following config file (or copy and paste the example zabbix_agentd script in this repository)
 ```bash
 sudo touch /etc/rc.d/zabbix_agentd
 ```
