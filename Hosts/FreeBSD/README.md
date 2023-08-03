@@ -41,8 +41,8 @@ cp -Rf conf/* .
 ```
 ### Edit Zabbix Agent
 ```bash 
-sed -i 's/Server=127.0.0.1/Server=172.31.9.154/' /etc/zabbix/zabbix_agentd.conf
-sed -i 's/ServerActive=127.0.0.1/ServerActive=172.31.9.154/' /etc/zabbix/zabbix_agentd.conf
+sed -i 's/Server=127.0.0.1/Server=ipserverhere/' /etc/zabbix/zabbix_agentd.conf
+sed -i 's/ServerActive=127.0.0.1/ServerActive=ipserverhere/' /etc/zabbix/zabbix_agentd.conf
 sed -i 's/Hostname=Zabbix server/Hostname=nas/' /etc/zabbix/zabbix_agentd.conf
 ```
 ### Enable DAEMON zabbix in rc.conf, add "zabbix_agentd_enable=YES"
