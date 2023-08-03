@@ -4,7 +4,7 @@ Quick start with Zabbix 6.4
 #### Server os-release:
 - Debian 11
 
-## Scripts:
+## Quick Start:
 
 #### zabbix_server6.4.sh
 Provisioning Mysql and Zabbix Server:
