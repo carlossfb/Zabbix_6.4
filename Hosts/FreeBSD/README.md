@@ -24,38 +24,38 @@ This case uses Zabbix Agent 5.4 source and has been tested with Linux by Zabbix 
 ### Configuration
  #### Zabbix should be configured according to instructions bellow
 
-#### Create source Zabbix Agent folder
+### Create source Zabbix Agent folder
 
 mkdir /etc/zabbix; cd /etc/zabbix
 
-#### Download Zabbix sources and unzip them
+### Download Zabbix sources and unzip them
 wget https://cdn.zabbix.com/zabbix/binaries/stable/5.4/5.4.10/zabbix_agent-5.4.10-freebsd-11.2-amd64-gnutls.tar.gz
 tar -xvzf zabbix_agent-5.4.10-freebsd-11.2-amd64-gnutls.tar.gz
 
-#### Copy unzipped binaries
+### Copy unzipped binaries
 cp sbin/* /usr/local/sbin
 cp bin/* /usr/local/bin
 cp -Rf conf/* .
 
-#### Edit Zabbix Agent
+### Edit Zabbix Agent
 cp /conf/zabbix_agentd.conf . 
 sed -i 's/Server=127.0.0.1/Server=172.31.9.154/' /etc/zabbix/zabbix_agentd.conf
 sed -i 's/ServerActive=127.0.0.1/ServerActive=172.31.9.154/' /etc/zabbix/zabbix_agentd.conf
 sed -i 's/Hostname=Zabbix server/Hostname=nas/' /etc/zabbix/zabbix_agentd.conf
 
-#### Enable DAEMON zabbix in rc.conf, add "zabbix_agentd_enable=YES"
+### Enable DAEMON zabbix in rc.conf, add "zabbix_agentd_enable=YES"
 echo 'zabbix_agentd_enable="YES"' >> /etc/rc.conf
 
-#### Create The following config
+### Create The following config
 sudo touch /etc/rc.d/zabbix_agentd
 
-#### Make executable
+### Make executable
 chmod +x /etc/rc.d/zabbix_agentd
 
-#### Persist Zabbix Agent configuration
+### Persist Zabbix Agent configuration
 cp /etc/rc.conf /conf/base/etc/ ; cp /etc/rc.d/zabbix_agentd /conf/base/etc/rc.d/
 
-#### Create a directory to indicate zabbix_agentd.conf as soft link
+### Create a directory to indicate zabbix_agentd.conf as soft link
 mkdir /conf/etc/zabbix ; cd /conf/etc/zabbix
 ln -s /etc/zabbix/zabbix_agentd.conf zabbix_agentd.conf
  
