@@ -19,7 +19,7 @@ Ps: For each distribution you will follow a slightly different process, I recomm
 
 
 ### Tested versions
-This case uses Zabbix Agent 5.4 source and has been tested with Linux by Zabbix Agent 6.4 (active/passive):
+This case uses Zabbix Server 6.4, and has been tested with Linux by Zabbix Agent 6.4 (active/passive):
 
 - Debian Stretch (9)
 - Debian Buster (10)
