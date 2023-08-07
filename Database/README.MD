@@ -25,6 +25,22 @@ This case uses Zabbix Server 6.4, and has been tested with Linux by Zabbix Agent
 ### Configuration
  #### Zabbix should be configured according to instructions bellow
 
+### For OS Linux: 
+
+You need create .my.cnf in zabbix-agent home directory (/var/lib/zabbix by default) 
+https://dev.mysql.com/doc/refman/5.7/en/option-files.html
+
+#### The file must have three strings:
+
+```vim
+[client]
+user='zbx_monitor'
+password='<password>'
+```
+
+After that, copy the template_db_mysql.conf to /etc/zabbix/zabbix_agentd.d (directory) or copy to zabbix conf file. Import mysql_active_templates,yaml and use apply to Host.
+
+
 ## Reference
 
- - [Install reference](https://www.zabbix.com/download?zabbix=6.4&os_distribution=debian&os_version=11&components=agent&db=&ws=)
+ - [Zabbix Mysql reference - based on Zabbix Agent 1](https://www.zabbix.com/br/integrations/mysql#mysql_agent)
