@@ -67,6 +67,11 @@ cp /etc/rc.conf /conf/base/etc/ ; cp /etc/rc.d/zabbix_agentd /conf/base/etc/rc.d
 mkdir /conf/etc/zabbix ; cd /conf/etc/zabbix
 ln -s /etc/zabbix/zabbix_agentd.conf zabbix_agentd.conf
  ```
+### Start daemon
+```
+/etc/rc.d/zabbix_agentd start
+ ```
+
 
 ## Referência
 
