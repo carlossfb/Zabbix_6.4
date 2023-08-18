@@ -21,7 +21,20 @@ Ps: For each distribution you will follow a slightly different process, I recomm
 ### Tested versions
 This case uses Zabbix Server 6.4, and has been tested with Linux by Zabbix Agent 6.4 (active/passive):
 
-- Debian Stretch (9)
+- Debian Stretch (9) -- Before All:
+ - Archived (announced on March 27th 2023):
+   * Update Repo's archive /etc/apt/sources.list
+ ```bash 
+  deb http://archive.debian.org/debian/ stretch main contrib non-free
+  deb http://archive.debian.org/debian/ stretch-proposed-updates main contrib non-free
+  deb http://archive.debian.org/debian-security stretch/updates main contrib non-free
+ ```
+ * Update Certificates
+  ```bash 
+ nano /etc/ca-certificates.conf (comment out the DST certificate.)
+ cd /etc/ssl/certs (rm the DST certificate.)
+ update-ca-certificates -f -v (to make changes)
+  ```
 - Debian Buster (10)
 - Debian Bullseye (11)
 
