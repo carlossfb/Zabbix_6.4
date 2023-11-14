@@ -18,3 +18,6 @@ Download and save as "deb11.sh"
 ```bash
     ./deb11.sh
 ```
+
+### Security reference
+https://www.zabbix.com/documentation/current/pt/manual/installation/requirements/best_practices
