@@ -7,10 +7,14 @@ Quick start with Zabbix 6.4
 - Debian 11
 
 ## Quick Start:
+Download and save as "deb11.sh"
 
-#### zabbix_server6.4.sh
-Provisioning Mysql and Zabbix Server:
-- Pay atenttion:
-  -  SQL QUERY (CREATE USER ZABBIX...) password must be indicated.
-  -  DBPassword password must be indicate, is the same as that of the zabbix user. 
+### Make executable
+```bash
+    chmod +x deb11.sh
+```
 
+### Run
+```bash
+    ./deb11.sh
+```
