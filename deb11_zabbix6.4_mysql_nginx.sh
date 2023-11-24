@@ -34,22 +34,6 @@ echo "==============Instalador Zabbix 6.4====================="
 echo "________________________________________________________"
 echo " " 
 
-#!/bin/bash
-
-# Nome do arquivo de log
-LOG_FILE="install_log.txt"
-
-# Funcao para exibir mensagem de erro e sair
-function exibir_erro {
-    echo "Erro: $1"
-    exit 1
-}
-# Funcao para solicitar senhas de forma segura
-function solicitar_senha {
-    local senha
-    read -s -p "$1: " senha
-    echo "$senha"
-}
 
 # Verifica se o wget esta instalado
 if ! command -v wget &> /dev/null; then
