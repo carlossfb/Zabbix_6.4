@@ -51,7 +51,6 @@ else
 
     # Instalando o MySQL APT Config
     apt update && apt upgrade ; wget https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb ; apt install ./mysql-apt-config_0.8.22-1_all.deb 
-    dpkg -i /tmp/mysql-apt-config.deb
     apt-get update -y
 
     # Instalando o MySQL Server
