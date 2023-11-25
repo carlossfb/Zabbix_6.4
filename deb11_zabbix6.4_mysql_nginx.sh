@@ -54,7 +54,7 @@ else
     apt-get update -y
 
     # Instalando o MySQL Server
-    apt-get install -y mysql-server >> "$LOG_FILE" 2>&1
+    apt-get install mysql-server >> "$LOG_FILE" 2>&1
 
     # Verifica se a instalacao do MySQL foi bem-sucedida
     if [ $? -ne 0 ]; then
