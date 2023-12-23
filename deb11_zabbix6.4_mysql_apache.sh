@@ -51,10 +51,8 @@ else
     echo "Instalando dependencia: MYSQL 8.0"
     sleep 2
 
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B7B3B788A8D3785C
-    apt install gnupg
     # Instalando o MySQL APT Config
-    apt update && apt upgrade ; wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb -O mysql-apt-config.deb
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B7B3B788A8D3785C && apt install gnupg && apt update && apt upgrade ; wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb -O mysql-apt-config.deb
     dpkg -i ./mysql-apt-config.deb
     dpkg-reconfigure mysql-apt-config
     apt-get update && apt upgrade
