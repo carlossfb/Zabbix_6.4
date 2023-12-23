@@ -59,11 +59,11 @@ else
 
     # Instalando o MySQL Server
     echo "Tentando instalar o mysql server, aguarde..."
-    apt-get install mysql-server >> "$LOG_FILE" 
+    apt-get install mysql-server
 
     # Verifica se a instalacao do MySQL foi bem-sucedida
     if [ $? -ne 0 ]; then
-        exibir_erro "Erro durante a instalacao do MySQL. Consulte o arquivo de log '$LOG_FILE' para mais detalhes."
+        exibir_erro "Erro durante a instalacao do MySQL."
     else
         echo "MySQL Community 8.0 instalado com sucesso!"
     fi
@@ -94,6 +94,8 @@ fi
 ZABBIX_PASSWORD=$(solicitar_senha "Digite a senha para o usuario 'zabbix'")
 echo " "
 MYSQL_PASSWORD=$(solicitar_senha "Digite a senha para o 'root' do mysql")
+
+echo "Aguarde que estamos ajustando algumas configurações"
 
 # Configuracao do banco de dados
 mysql -u root -p$MYSQL_PASSWORD mysql -e "create database zabbix character set utf8mb4 collate utf8mb4_bin; create user zabbix@localhost identified by '$ZABBIX_PASSWORD'; grant all privileges on zabbix.* to zabbix@localhost; set global log_bin_trust_function_creators = 1;"
