@@ -52,12 +52,14 @@ else
     sleep 2
 
     # Instalando o MySQL APT Config
-    apt update && apt upgrade ; wget https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb ; apt install ./mysql-apt-config_0.8.22-1_all.deb 
-    dpkg -i /tmp/mysql-apt-config.deb
-    apt-get update -y
+    apt update && apt upgrade ; wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb -O mysql-apt-config.deb
+    dpkg -i ./mysql-apt-config.deb
+    dpkg-reconfigure mysql-apt-config
+    apt-get update && apt upgrade
 
     # Instalando o MySQL Server
-    apt-get install -y mysql-server >> "$LOG_FILE" 2>&1
+    echo "Tentando instalar o mysql server, aguarde..."
+    apt-get install mysql-server >> "$LOG_FILE" 
 
     # Verifica se a instalacao do MySQL foi bem-sucedida
     if [ $? -ne 0 ]; then
@@ -91,15 +93,16 @@ fi
 # Solicitar senhas
 ZABBIX_PASSWORD=$(solicitar_senha "Digite a senha para o usuario 'zabbix'")
 echo " "
+MYSQL_PASSWORD=$(solicitar_senha "Digite a senha para o 'root' do mysql")
 
 # Configuracao do banco de dados
-mysql -u root mysql -e "create database zabbix character set utf8mb4 collate utf8mb4_bin; create user zabbix@localhost identified by '$ZABBIX_PASSWORD'; grant all privileges on zabbix.* to zabbix@localhost; set global log_bin_trust_function_creators = 1;"
+mysql -u root -p$MYSQL_PASSWORD mysql -e "create database zabbix character set utf8mb4 collate utf8mb4_bin; create user zabbix@localhost identified by '$ZABBIX_PASSWORD'; grant all privileges on zabbix.* to zabbix@localhost; set global log_bin_trust_function_creators = 1;"
 
 # Importar estrutura do banco de dados
 zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p"$ZABBIX_PASSWORD" zabbix
 
 # Desativar o log_bin_trust_function_creators apos a importacao
-mysql -u root -e "set global log_bin_trust_function_creators = 0;"
+mysql -u root -p$MYSQL_PASSWORD -e "set global log_bin_trust_function_creators = 0;"
 
 # Modificar o arquivo de configuracao do Zabbix
 echo "Estamos agora alterando o arquivo /etc/zabbix/zabbix_server.conf"
